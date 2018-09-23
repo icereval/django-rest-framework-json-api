@@ -9,14 +9,15 @@ from rest_framework_json_api.pagination import PageNumberPagination
 from rest_framework_json_api.utils import format_drf_errors
 from rest_framework_json_api.views import ModelViewSet, RelationshipView
 
-from example.models import Author, Blog, Comment, Company, Entry, Project
+from example.models import Author, Blog, Comment, Company, Entry, Project, ProjectType
 from example.serializers import (
     AuthorSerializer,
     BlogSerializer,
     CommentSerializer,
     CompanySerializer,
     EntrySerializer,
-    ProjectSerializer
+    ProjectSerializer,
+    ProjectTypeSerializer
 )
 
 HTTP_422_UNPROCESSABLE_ENTITY = 422
@@ -121,6 +122,11 @@ class CompanyViewset(ModelViewSet):
 class ProjectViewset(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
+
+class ProjectTypeViewset(ModelViewSet):
+    queryset = ProjectType.objects.all()
+    serializer_class = ProjectTypeSerializer
 
 
 class EntryRelationshipView(RelationshipView):
